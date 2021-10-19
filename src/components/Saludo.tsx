@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { ChangeEvent, useState } from 'react'
 import { concatenarSaludo } from '../domain/saludar'
 
 export const Saludo = () => {
@@ -10,8 +10,9 @@ export const Saludo = () => {
         setResultado(concatenarSaludo(input));
     };
 
-    const handleInputChange = (evento) => {
-        setInput(evento.target.value);
+    const handleInputChange = ({target}: ChangeEvent<HTMLInputElement>) => {
+        const {value} = target
+        setInput(value);
     };
 
     return (
