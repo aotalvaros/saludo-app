@@ -1,13 +1,17 @@
-import React, { ChangeEvent, useState } from 'react'
-import { concatenarSaludo } from '../domain/saludar'
+import React, { ChangeEvent, useState } from 'react';
+import { concatenarSaludo } from '../domain/saludar';
+
+interface Iusuario {
+    name: String
+}
 
 export const Saludo = () => {
 
     const [input, setInput] = useState('');
-    const [resultado, setResultado] = useState('');
+    const [resultado, setResultado] = useState<Iusuario>();
 
     const saludaBtn = () =>{
-        setResultado(concatenarSaludo(input));
+        setResultado({name: concatenarSaludo(input)});
     };
 
     const handleInputChange = ({target}: ChangeEvent<HTMLInputElement>) => {
@@ -26,7 +30,9 @@ export const Saludo = () => {
                 onClick={saludaBtn}
                 >Saludar</button>
 
-            <p id='pMuestraSaludo'>{resultado}</p>
+            {
+                (resultado) &&  <p id='pMuestraSaludo'>{JSON.stringify(resultado.name)}</p>
+            }
 
         </div>
     );
