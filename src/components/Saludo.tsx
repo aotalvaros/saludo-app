@@ -1,9 +1,6 @@
 import React, { ChangeEvent, useState } from 'react';
 import { concatenarSaludo } from '../domain/saludar';
-
-interface Iusuario {
-    name: String
-}
+import { Iusuario } from '../interface/Iusuario';
 
 export const Saludo = () => {
 
