@@ -1,19 +1,21 @@
 import React, { ChangeEvent, useState } from 'react';
 import { concatenarSaludo } from '../domain/saludar';
-import { Iusuario } from '../interface/Iusuario';
+import { Iusuario } from '../interface/components/Iusuario';
+
+
 
 export const Saludo = () => {
 
-    const [input, setInput] = useState('');
+    const [input, setInput] = useState<Iusuario>({ name:'' });
     const [resultado, setResultado] = useState<Iusuario>();
 
     const saludaBtn = () =>{
-        setResultado({name: concatenarSaludo(input)});
+        setResultado({ name: concatenarSaludo({name: input.name}) });
     };
 
-    const handleInputChange = ({target}: ChangeEvent<HTMLInputElement>) => {
-        const {value} = target
-        setInput(value);
+    const handleInputChange = ({ target }: ChangeEvent<HTMLInputElement>) => {
+        const { value } = target
+        setInput({ name: value });
     };
 
     return (
