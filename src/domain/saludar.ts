@@ -1,4 +1,5 @@
+import { IUsuarioDomain } from "../interface/domain/IUsuarioDomain";
 
-export function concatenarSaludo (valorCampo: String): String {
-    return `Hola ${valorCampo.trim()}`
+export function concatenarSaludo (nombre:IUsuarioDomain): String {
+    return `Hola ${nombre.name}`
 };
